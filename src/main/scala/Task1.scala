@@ -32,6 +32,6 @@ object Task1 extends App {
       )
     }
 
-  Http().bindAndHandle(welcomeRoute, "localhost", 8080)
+  Http().bindAndHandle(welcomeRoute, "0.0.0.0", 8080)
 
 }

@@ -1,1 +1,1 @@
-["sbt.Task[scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]",{"hashes":[["/Users/dhawal.shah/CI-CD/build.sbt","e59e39ac516f4be5327b97f2716e4b026bda9f9d"]],"lastModifiedTimes":[]}]
+["sbt.Task[scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]",{"hashes":[["/Users/dhawal.shah/CI-CD/build.sbt","e59e39ac516f4be5327b97f2716e4b026bda9f9d"],["/Users/dhawal.shah/CI-CD/project/assembly.sbt","f041c30515dc3e5db108bf315ffb31b27cc35f4c"]],"lastModifiedTimes":[]}]
