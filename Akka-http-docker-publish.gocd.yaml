@@ -9,7 +9,7 @@ pipelines:
       Akka-http-build:
         ignore_for_scheduling: false
         pipeline: Akka-http-build-yaml
-        stage: Build
+        stage: building-jar
       git:
         git: https://github.com/dhawalshah48/CI-CD
         shallow_clone: false
