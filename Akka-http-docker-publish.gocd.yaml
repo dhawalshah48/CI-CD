@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
   Akka-http-docker-publish:
-    group: Bootcamp
+    group: Test
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
