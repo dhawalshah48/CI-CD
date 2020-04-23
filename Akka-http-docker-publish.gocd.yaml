@@ -16,7 +16,7 @@ pipelines:
         auto_update: true
         branch: master
     stages:
-      - FetchingJarWithMakingImage:
+      - fetching-jar-making-docker-image:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
@@ -24,7 +24,7 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            BothWork:
+            fetching-making:
               timeout: 0
               tasks:
                 - fetch:
@@ -44,7 +44,7 @@ pipelines:
                       - dhawalshah48/go-pipeline
                     command: docker
                     run_if: passed
-      - PublishImage:
+      - publishing-docker-image:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
@@ -52,7 +52,7 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            Publish:
+            publish:
               timeout: 0
               tasks:
                 - exec:
