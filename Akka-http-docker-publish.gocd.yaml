@@ -1,0 +1,74 @@
+format_version: 3
+pipelines:
+  Akka-http-docker-publish:
+    group: Bootcamp
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      Akka-http-build:
+        ignore_for_scheduling: false
+        pipeline: Akka-http-build
+        stage: Build
+      git:
+        git: https://github.com/dhawalshah48/CI-CD
+        shallow_clone: false
+        auto_update: true
+        branch: master
+    stages:
+    - FetchingJarWithMakingImage:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          BothWork:
+            timeout: 0
+            tasks:
+            - fetch:
+                is_file: true
+                source: target/scala-2.12/CI-CD-assembly-0.1.jar
+                destination: ''
+                pipeline: Akka-http-build
+                stage: Build
+                job: BuildJar
+                artifact_origin: gocd
+                run_if: passed
+    - Build:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          BuildDockerImage:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - build
+                - .
+                - -t
+                - dhawalshah48/go-pipeline
+                command: docker
+                run_if: passed
+    - PublishImage:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          Publish:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - push
+                - dhawalshah48/go-pipeline
+                command: docker
+                run_if: passed

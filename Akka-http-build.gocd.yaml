@@ -1,0 +1,52 @@
+format_version: 3
+pipelines:
+  Akka-http-build:
+    group: Bootcamp
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git:
+        git: https://github.com/dhawalshah48/CI-CD
+        shallow_clone: false
+        auto_update: true
+        branch: master
+    stages:
+    - Compiling:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          Compiling:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - clean
+                - compile
+                - test
+                command: sbt
+                run_if: passed
+    - Build:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          BuildJar:
+            timeout: 0
+            artifacts:
+            - build:
+                source: '**/CI-CD-assembly-0.1.jar'
+                destination: ''
+            tasks:
+            - exec:
+                arguments:
+                - assembly
+                command: sbt
+                run_if: passed

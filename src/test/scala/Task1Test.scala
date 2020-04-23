@@ -1,6 +1,6 @@
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.testkit.ScalatestRouteTest
-import org.scalatest.{FunSuite, Matchers, WordSpec}
+import org.scalatest.{Matchers, WordSpec}
 
 class Task1Test extends WordSpec with Matchers with ScalatestRouteTest {
 
