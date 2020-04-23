@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
-  Akka-http-build:
-    group: Bootcamp
+  Akka-http-build-yaml:
+    group: Bootcamp-yaml
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1

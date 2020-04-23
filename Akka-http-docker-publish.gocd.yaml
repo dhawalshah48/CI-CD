@@ -1,14 +1,14 @@
 format_version: 3
 pipelines:
-  Akka-http-docker-publish:
-    group: Bootcamp
+  Akka-http-docker-publish-yaml:
+    group: Bootcamp-yaml
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
       Akka-http-build:
         ignore_for_scheduling: false
-        pipeline: Akka-http-build
+        pipeline: Akka-http-build-yaml
         stage: Build
       git:
         git: https://github.com/dhawalshah48/CI-CD
@@ -31,7 +31,7 @@ pipelines:
                 is_file: true
                 source: target/scala-2.12/CI-CD-assembly-0.1.jar
                 destination: ''
-                pipeline: Akka-http-build
+                pipeline: Akka-http-build-yaml
                 stage: Build
                 job: BuildJar
                 artifact_origin: gocd
