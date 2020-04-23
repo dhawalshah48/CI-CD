@@ -32,8 +32,8 @@ pipelines:
                     source: target/scala-2.12/CI-CD-assembly-0.1.jar
                     destination: ''
                     pipeline: Akka-http-build-yaml
-                    stage: Build
-                    job: BuildJar
+                    stage: building-jar
+                    job: build-jar
                     artifact_origin: gocd
                     run_if: passed
                 - exec:
