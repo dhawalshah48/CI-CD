@@ -2,7 +2,7 @@ format_version: 3
 pipelines:
   Akka-http-docker-publish-yaml:
     group: Bootcamp-yaml
-    label_template: ${GO_PIPELINE_LABEL}
+    label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
@@ -41,7 +41,7 @@ pipelines:
                       - build
                       - .
                       - -t
-                      - dhawalshah48/go-pipeline
+                      - dhawalshah48/go-pipeline:${GO_PIPELINE_LABEL}
                     command: docker
                     run_if: passed
       - publishing-docker-image:
