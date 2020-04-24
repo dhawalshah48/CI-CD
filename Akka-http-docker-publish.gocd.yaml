@@ -38,11 +38,13 @@ pipelines:
                     run_if: passed
                 - exec:
                     arguments:
+                      - -c
+                      - docker
                       - build
                       - .
                       - -t
                       - dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
-                    command: docker
+                    command: sh
                     run_if: passed
       - publishing-docker-image:
           fetch_materials: true
