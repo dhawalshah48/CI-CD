@@ -59,5 +59,7 @@ pipelines:
                     command: sh
                     arguments:
                       - -c
-                      - docker push dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
+                      - docker
+                      - push
+                      - dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
                     run_if: passed
