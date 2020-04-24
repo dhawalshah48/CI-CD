@@ -2,7 +2,7 @@ format_version: 3
 pipelines:
   Akka-http-docker-publish-yaml:
     group: Bootcamp-yaml
-    label_template: ${COUNT}
+    label_template: ${GO_PIPELINE_LABEL}
     lock_behavior: none
     display_order: -1
     materials:
