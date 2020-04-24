@@ -37,14 +37,10 @@ pipelines:
                     artifact_origin: gocd
                     run_if: passed
                 - exec:
+                    command: sh
                     arguments:
                       - -c
-                      - docker
-                      - build
-                      - .
-                      - -t
-                      - dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
-                    command: sh
+                      - docker build . -t dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
                     run_if: passed
       - publishing-docker-image:
           fetch_materials: true
@@ -61,7 +57,5 @@ pipelines:
                     command: sh
                     arguments:
                       - -c
-                      - docker
-                      - push
-                      - dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
+                      - docker push dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
                     run_if: passed
