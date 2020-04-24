@@ -41,7 +41,7 @@ pipelines:
                       - build
                       - .
                       - -t
-                      - dhawalshah48/go-pipeline:${GO_PIPELINE_LABEL}
+                      - dhawalshah48/go-pipeline
                     command: docker
                     run_if: passed
       - publishing-docker-image:
@@ -56,8 +56,10 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
+                    command: sh
                     arguments:
+                      - -c
+                      - docker
                       - push
-                      - dhawalshah48/go-pipeline
-                    command: docker
+                      - dhawalshah48/go-pipeline:${GO_PIPELINE_LABEL}
                     run_if: passed
