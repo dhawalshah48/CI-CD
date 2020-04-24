@@ -41,7 +41,7 @@ pipelines:
                       - build
                       - .
                       - -t
-                      - dhawalshah48/go-pipeline
+                      - dhawalshah48/go-pipeline:$GO_PIPELINE_LABEL
                     command: docker
                     run_if: passed
       - publishing-docker-image:
