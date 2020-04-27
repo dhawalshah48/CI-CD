@@ -25,12 +25,6 @@ pipelines:
             tasks:
               - exec:
                   arguments:
-                    - global
-                    - 11.0
-                  command: jenv
-                  run_if: passed
-              - exec:
-                  arguments:
                     - --version
                   command: java
                   run_if: passed
