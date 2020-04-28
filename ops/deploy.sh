@@ -1,3 +1,4 @@
+#!/bin/bash
 SERVICE_PRESENT="$(kubectl describe services | grep -c "go-pipeline-service")"
 j2 ./ops/Kubernetes/deployment-defination.j2.yml > ./ops/Kubernetes/deployment-defination.yml
 if [ "$SERVICE_PRESENT" == 0 ]
