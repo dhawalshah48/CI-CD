@@ -2,7 +2,7 @@ format_version: 3
 pipelines:
   Akka-http-docker-publish-yaml:
     group: Bootcamp-yaml
-    label_template: $GO_DEPENDENCY_LABEL_AKKA_HTTP_BUILD_YAML
+    label_template: ${GO_DEPENDENCY_LABEL_AKKA_HTTP_BUILD_YAML}
     lock_behavior: none
     display_order: -1
     materials:
