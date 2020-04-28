@@ -6,32 +6,33 @@ import akka.stream.ActorMaterializer
 
 object Task1 extends SprayJsonSupport {
 
-  implicit val system = ActorSystem("HttpService")
-  implicit val materializer = ActorMaterializer()
+  def main(args: Array[String]): Unit = {
+    implicit val system = ActorSystem("HttpService")
+    implicit val materializer = ActorMaterializer()
 
-  import akka.http.scaladsl.server.Directives._
-  import system.dispatcher
+    import akka.http.scaladsl.server.Directives._
+    import system.dispatcher
 
-  val welcomeRoute =
-    path("greet" / Segment) { (name: String) =>
-      complete(
-        StatusCodes.OK,
-        HttpEntity(
-          ContentTypes.`application/json`,
-          s"""{"message": "Hello $name"}""".stripMargin
+    val welcomeRoute =
+      path("greet" / Segment) { (name: String) =>
+        complete(
+          StatusCodes.OK,
+          HttpEntity(
+            ContentTypes.`application/json`,
+            s"""{"message": "Hello $name"}""".stripMargin
+          )
         )
-      )
-    } ~
-    path("health") {
-      complete(
-        StatusCodes.OK,
-        HttpEntity(
-          ContentTypes.`application/json`,
-          """{"status": "OK"}"""
-        )
-      )
-    }
+      } ~
+        path("health") {
+          complete(
+            StatusCodes.OK,
+            HttpEntity(
+              ContentTypes.`application/json`,
+              """{"status": "OK"}"""
+            )
+          )
+        }
 
-  Http().bindAndHandle(welcomeRoute, "0.0.0.0", 8080)
-
+    Http().bindAndHandle(welcomeRoute, "0.0.0.0", 8080)
+  }
 }
