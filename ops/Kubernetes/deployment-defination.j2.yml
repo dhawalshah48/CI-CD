@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-pipeline-deployment
+  labels:
+    app: go-pipeline
+    type: pipeline
+spec:
+  template:
+    metadata:
+      name: go-pipeline-pod
+      labels:
+        app: go-pipeline
+        type: pipeline
+    spec:
+      containers:
+        - name: go-pipeline
+          image: dhawalshah48/go-pipeline:{{GO_DEPENDENCY_LABEL_AKKA_HTTP_BUILD}}
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-pipeline

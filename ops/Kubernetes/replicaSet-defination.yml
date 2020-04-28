@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: go-pipeline-replicaset
+  labels:
+    app: go-pipeline
+    type: pipeline
+spec:
+  template:
+    metadata:
+      name: go-pipeline-pod
+      labels:
+        app: go-pipeline
+        type: pipeline
+    spec:
+      containers:
+        - name: go-pipeline
+          image: dhawalshah48/go-pipeline:8
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-pipeline

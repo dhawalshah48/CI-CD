@@ -1,0 +1,28 @@
+format_version: 3
+pipelines:
+  Akka-http-deploy:
+    group: Bootcamp-yaml
+    label_template: $GO_DEPENDENCY_LABEL_AKKA_HTTP_DOCKER_PUBLISH_YAML
+    lock_behavior: none
+    display_order: -1
+    materials:
+      Akka-http-docker-publish-yaml:
+        ignore_for_scheduling: false
+        pipeline: Akka-http-docker-publish-yaml
+        stage: publishing-docker-image
+      git:
+        git: https://github.com/dhawalshah48/CI-CD
+        shallow_clone: false
+        auto_update: true
+        branch: master
+    stages:
+      - deployment:
+          jobs:
+            deploy:
+              tasks:
+                - exec:
+                    arguments:
+                      - -c
+                        ./ops/deploy.sh
+                    command: sh
+                    run_if: passed
