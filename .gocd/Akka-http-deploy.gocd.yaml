@@ -2,7 +2,7 @@ format_version: 3
 pipelines:
   Akka-http-deploy:
     group: Bootcamp-yaml
-    label_template: ${GO_DEPENDENCY_LABEL_AKKA_HTTP_DOCKER_PUBLISH_YAML}
+    label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
