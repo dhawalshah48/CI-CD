@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: go-pipeline
-          image: dhawalshah48/go-pipeline:{{GO_DEPENDENCY_LABEL_AKKA_HTTP_BUILD}}
+          image: dhawalshah48/go-pipeline:{{GO_DEPENDENCY_LABEL_AKKA_HTTP_DOCKER_PUBLISH_YAML}}
   replicas: 3
   selector:
     matchLabels:
