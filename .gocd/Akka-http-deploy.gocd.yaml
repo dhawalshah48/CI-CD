@@ -23,6 +23,6 @@ pipelines:
                 - exec:
                     arguments:
                       - -c
-                        ./ops/deploy.sh
+                      - ./ops/deploy.sh
                     command: sh
                     run_if: passed
